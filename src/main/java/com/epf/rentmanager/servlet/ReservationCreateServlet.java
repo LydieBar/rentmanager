@@ -63,17 +63,8 @@ public class ReservationCreateServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest   request,   HttpServletResponse response) throws ServletException, IOException {
-        // traitement du formulaire (appel à la méthode de sauvegarde)}
-
-/*        Reservation reservation = new Reservation(
-                Long.parseLong(request.getParameter("vehicles").toString()),
-                Long.parseLong(request.getParameter("clients").toString()),
-                LocalDate.parse((request.getParameter("begin") ), DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                LocalDate.parse((request.getParameter("end") ), DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-        );*/
 
         try {
-            //reservationService.create(reservation);
 
             Long client =Long.parseLong(request.getParameter("client").toString());
             Long voiture =Long.parseLong(request.getParameter("car").toString());

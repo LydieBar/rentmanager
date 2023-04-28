@@ -41,7 +41,6 @@ public class VehicleCreateServlet extends HttpServlet {
 
     }
     protected void doPost(HttpServletRequest   request,   HttpServletResponse response) throws ServletException, IOException {
-        // traitement du formulaire (appel à la méthode de sauvegarde)}
 
         try {
             String constructeur =request.getParameter("manufacturer");

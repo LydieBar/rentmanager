@@ -22,14 +22,6 @@ public class VehicleDao {
 	@Autowired
 	private ReservationService reservationService;
 
-/*	private static VehicleDao instance = null;
-	private VehicleDao() {}
-	public static VehicleDao getInstance() {
-		if(instance == null) {
-			instance = new VehicleDao();
-		}
-		return instance;
-	}*/
 	private VehicleDao() {}
 	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places) VALUES(?, ?);";
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
@@ -59,25 +51,6 @@ public class VehicleDao {
 	}
 
 	public long delete(long id) throws DaoException {
-		/*try {
-			Connection connection = ConnectionManager.getConnection();
-			PreparedStatement ps = connection.prepareStatement(DELETE_VEHICLE_QUERY);
-			ps.setLong(1,vehicle.getId());
-			ps.execute();
-
-			//long id = ps.executeUpdate();
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			long id = rs.getInt("id");
-			//id = ps.executeUpdate();
-			ps.execute();
-			ps.close();
-
-			connection.close();
-			return id;
-		} catch (SQLException e) {
-			throw new DaoException();
-		}*/
 		try (
 				Connection connection = ConnectionManager.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_VEHICLE_QUERY);
@@ -102,7 +75,6 @@ public class VehicleDao {
 				String constructeur = rs.getString("constructeur");
 				int nbPlaces = rs.getInt("nb_places");
 
-				//connection.close();
 				return new Vehicle(id,constructeur,nbPlaces);
 			}
 			ps.execute();
@@ -110,7 +82,6 @@ public class VehicleDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//throw new DaoException();
 		}
 		return null;
 	}

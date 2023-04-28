@@ -19,14 +19,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ClientDao {
 
-/*	private static ClientDao instance = null;
-	private ClientDao() {}
-	public static ClientDao getInstance() {
-		if(instance == null) {
-			instance = new ClientDao();
-		}
-		return instance;
-	}*/
 	private ClientDao() {}
 	private static final String CREATE_CLIENT_QUERY = "INSERT INTO Client(nom, prenom, email, naissance) VALUES(?, ?, ?, ?);";
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
@@ -41,7 +33,6 @@ public class ClientDao {
 			Connection connection = ConnectionManager.getConnection();
 
 			PreparedStatement ps = connection.prepareStatement(CREATE_CLIENT_QUERY);
-			//ps.setLong(1,client.getId());
 			ps.setString(1, client.getNom());
 
 			ps.setString(2, client.getPrenom());
@@ -51,12 +42,6 @@ public class ClientDao {
 
 			ps.setDate(4, Date.valueOf(client.getNaissance()));
 
-			//ps.execute();
-
-			//long id = ps.executeUpdate();
-			/*ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			long id = rs.getInt("id");*/
 			long id = ps.executeUpdate();
 			ps.close();
 
@@ -73,25 +58,6 @@ public class ClientDao {
 
 	public long delete(long id) throws DaoException {
 
-		/*try {
-			Connection connection = ConnectionManager.getConnection();
-			PreparedStatement ps = connection.prepareStatement(DELETE_CLIENT_QUERY);
-			ps.setLong(1,client.getId());
-			ps.execute();
-
-			//long id = ps.executeUpdate();
-			ResultSet rs = ps.getGeneratedKeys();
-			rs.next();
-			long id = rs.getInt("id");
-			//id = ps.executeUpdate();
-			ps.execute();
-			ps.close();
-
-			connection.close();
-			return id;
-		} catch (SQLException e) {
-			throw new DaoException();
-		}*/
 
 		try (
 				Connection connection = ConnectionManager.getConnection();
@@ -102,17 +68,6 @@ public class ClientDao {
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage());
 		}
-/*
-		try {
-			Connection connection = ConnectionManager.getConnection();
-			PreparedStatement ps = connection.prepareStatement(DELETE_CLIENT_QUERY);
-			ps.setLong(1, client.getId());
-			long key = ps.executeUpdate();
-			connection.close();
-			return key;
-		} catch (SQLException e) {
-			throw new DaoException();
-		}*/
 
 	}
 
@@ -161,11 +116,9 @@ public class ClientDao {
 			ps.execute();
 			ps.close();
 
-			//connection.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//throw new DaoException();
 		}
 
 		return clients;

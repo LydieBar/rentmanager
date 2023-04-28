@@ -16,21 +16,9 @@ import org.springframework.stereotype.Service;
 public class ReservationService {
     public static int duree = 30;
     private ReservationDao reservationDao;
-    //public static ReservationService instance;
+
 
     private ReservationService(ReservationDao reservationDao){this.reservationDao = reservationDao;}
-
-  /*  private ReservationService() {
-        this.reservationDao = ReservationDao.getInstance();
-    }
-
-    public static ReservationService getInstance() {
-        if (instance == null) {
-            instance = new ReservationService();
-        }
-
-        return instance;
-    }*/
 
 
     public long create(Reservation reservation) throws ServiceException {

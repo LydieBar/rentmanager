@@ -25,20 +25,8 @@ public class ClientService {
 	public static ClientService instance;
 
 	private ClientService(ClientDao clientDao){this.clientDao = clientDao;}
-	
-/*	private ClientService() {
-		this.clientDao = ClientDao.getInstance();
-	}
-	
-	public static ClientService getInstance() {
-		if (instance == null) {
-			instance = new ClientService();
-		}
-		
-		return instance;
-	}*/
-	
-	
+
+
 	public long create(Client client) throws ServiceException {
 		// TODO: créer un client
 

@@ -57,15 +57,7 @@ public class ReservationDao {
 	}
 	
 	public long delete(long id) throws DaoException {
-		/*try (
-				Connection connection = ConnectionManager.getConnection();
-				PreparedStatement ps = connection.prepareStatement(DELETE_RESERVATION_QUERY);
-		) {
-			ps.setLong(1, reservation.getId());
-			return ps.executeUpdate();
-		} catch (SQLException e) {
-			throw new DaoException();
-		}*/
+
 		try (
 				Connection connection = ConnectionManager.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_RESERVATION_QUERY);
@@ -123,7 +115,6 @@ public class ReservationDao {
 				LocalDate debut = rs.getDate("debut").toLocalDate();
 				LocalDate fin = rs.getDate("fin").toLocalDate();
 
-				//connection.close();
 				reservations.add(new Reservation(id,client_id,vehicle_id,debut,fin));
 
 			}

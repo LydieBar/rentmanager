@@ -42,12 +42,6 @@
                                     <td>${client.nom}</td>
                                     <td>${client.email}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?${client.id}">
-                                        <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success" href="${pageContext.request.contextPath}/users/details?${client.id}">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
                                         <a class="btn btn-danger" href="./clientDelete?id=${client.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
